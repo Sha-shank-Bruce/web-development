@@ -1,0 +1,20 @@
+
+<HTML>
+ <HEAD>
+  <TITLE> Search staff </TITLE>
+ </HEAD>
+
+ <BODY>
+ <h6 align="right"><a href="staff.jsp">Back</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="login.jsp">Logout</a></h6>
+  
+ <form name="searchstaff" action="searchstaff1.jsp">
+ 
+ <center><h1>Search Staff</h1>
+ <table ><tr><td>ID</td><td><input type="text" name="id"></td></tr>
+ </table>
+ <br><table><tr><td><input type="submit" value="Search"></td>
+  <td><input type= "reset" value= "Cancel"></td></tr></table>
+  </center>
+  </form>
+ </BODY>
+</HTML>

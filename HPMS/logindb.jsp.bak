@@ -1,0 +1,46 @@
+<HTML> 
+ <BODY>
+ <%@ page import="java.io.*"%>
+ <%@ page import="java.sql.*"%>
+ <%@ include file="conn.jsp"%>
+ <%!
+ PreparedStatement pst;
+ Statement stmt;
+ String userid;
+ String password;
+ String roles;
+ %>
+ <%
+ userid=request.getParameter("userid");
+ password=request.getParameter("pass");
+ %>
+ <%
+ stmt=con.createStatement();
+ ResultSet rs=stmt.executeQuery("select * from login where userid='"+userid+"' and password='"+password+"'");
+if(rs.next())
+ {
+ roles=rs.getString(3);
+ session.setAttribute("userid",userid);
+ session.setAttribute("roles",roles);
+if(roles.equals("admin"))
+ {
+ %>
+ <jsp:forward page="adminpage.jsp"/>
+ <%
+ }
+ else if(roles.equals("receptionist"))
+ {
+ %>
+ <jsp:forward page="receptionist.jsp"/>
+ <%
+ }
+ else
+ {
+ %>
+ <jsp:forward page="doctor.jsp"/>
+ <%
+ }
+ }
+ %>
+ </BODY>
+</HTML>

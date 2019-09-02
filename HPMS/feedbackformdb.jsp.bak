@@ -1,0 +1,69 @@
+<HTML>
+ <HEAD>
+  <TITLE> Out Patient</TITLE>
+  </HEAD>
+ <BODY>
+ <%@ page import="java.sql.*"%>
+ <%@ include file="conn.jsp"%>
+ <%@ page import="java.io.*"%>
+ <%@ page language="java"%>
+ <%
+  String id=request.getParameter("id");
+ String pname=request.getParameter("name");
+ String gender=request.getParameter("gender");
+ String address=request.getParameter("addr");
+ int age=Integer.parseInt(request.getParameter("age"));
+ int phno=Integer.parseInt(request.getParameter("phno"));
+ String email=request.getParameter("email");
+ int bedno=Integer.parseInt(request.getParameter("bedno"));
+ String ward=request.getParameter("ward");
+ String doctor=request.getParameter("doc");
+ String diagnosis=request.getParameter("diag");
+ String treatment=request.getParameter("treatment");
+ String hospitalenvrmt=request.getParameter("a");
+  String wardfacility=request.getParameter("b");
+ String toilets=request.getParameter("c");
+ String food=request.getParameter("d");
+ String attendingdoc=request.getParameter("e");
+ String attendingnurse =request.getParameter("f");
+ String hospitalbilling=request.getParameter("g");
+ String receptionservice=request.getParameter("h");
+ String admisionprocess=request.getParameter("i");
+ String dischargeprocess=request.getParameter("j");
+ String cameas=request.getParameter("x");
+ String splcomment=request.getParameter("sc");
+
+ %>
+ <%
+ PreparedStatement ps=con.prepareStatement("insert into feedback values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+ps.setString(1,cameas);
+ps.setString(2,id);
+ps.setString(3,pname);
+ps.setInt(4,age);
+ps.setString(5,gender);
+ps.setString(6,address);
+ps.setInt(7,phno);
+ps.setString(8,email);
+ps.setInt(9,bedno);
+ps.setString(10,ward);
+ps.setString(11,doctor);
+ps.setString(12,diagnosis);
+ps.setString(13,treatment);
+ps.setString(14,hospitalenvrmt);
+ps.setString(15,wardfacility);
+ps.setString(16,toilets);
+ps.setString(17,food);
+ps.setString(18,attendingdoc);
+ps.setString(19,attendingnurse);
+ps.setString(20,hospitalbilling);
+ps.setString(21,receptionservice);
+ps.setString(22,admisionprocess);
+ps.setString(23,dischargeprocess);
+ps.setString(24,splcomment);
+ps.executeUpdate();
+%>
+<h1>Insert Successfully</h1>
+<a href="feedbackform.jsp">Feedback Form</a>
+</BODY>
+</HTML>
+

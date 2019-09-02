@@ -1,0 +1,39 @@
+ <div align="right"><a href="viewps2.jsp"><h3>Back</h3></a></div>
+ <HTML>
+ <HEAD>
+  <TITLE>Patient Health Status</TITLE>
+  </HEAD>
+ <BODY>
+ <%@ page import="java.sql.*"%>
+ <%@ include file="conn.jsp"%>
+ <%@ page import="java.io.*"%>
+ <%@ page language="java"%>
+ <%
+  int id=Integer.parseInt(request.getParameter("id"));
+ String pname=request.getParameter("pname");
+ String date=request.getParameter("date");
+String rdoc=request.getParameter("rdoc");
+String speciality=request.getParameter("spl");
+String condofpat=request.getParameter("cond");
+String status=request.getParameter("status");
+String prescription=request.getParameter("prescription");
+int wardno=Integer.parseInt(request.getParameter("wardno"));
+
+ %>
+ <%
+ PreparedStatement ps=con.prepareStatement("insert into status values(?,?,?,?,?,?,?,?,?)");
+ ps.setInt(1,id);
+ ps.setString(2,pname); 
+ ps.setString(3,rdoc);
+ ps.setString(4,speciality);
+ ps.setInt(5,wardno);
+ ps.setString(6,condofpat);
+ ps.setString(7,status);
+ ps.setString(8,prescription);
+ ps.setString(9,date);
+ ps.executeUpdate();
+ %>
+ <h1>Insert Succesfully</h1>
+ <a href="patienthealthstatus.jsp">Patient Health Status</a>
+ </BODY>
+ </HTML>

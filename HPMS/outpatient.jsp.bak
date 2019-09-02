@@ -1,0 +1,98 @@
+<%@ page language="java"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<HTML>
+ <HEAD>
+  <TITLE> OutPatient </TITLE>
+ </HEAD>
+
+ <BODY>
+  <div align="right"><a href="outpat1.jsp"><h3>Back</h3></a></div>
+ <center><h1>OutPatient</h1></center>
+ <center>
+ <form name="myform" action="outpatientdb.jsp">
+ <table align="center">
+ <tr><td>PatientId</td>
+ <td><select name="id"><option value=""selected>
+<%!
+String s;
+int id;
+%>
+<%
+Statement st=con.createStatement();
+s="select * from registration";
+ResultSet rs=st.executeQuery(s);
+while(rs.next())
+{
+id=rs.getInt(1);
+%>
+<option><%=id%></option>
+<%
+}
+%>
+</select>
+</td>
+
+ <td>Date</td>
+ <td><input type="text" name="date"></td>
+ </tr>
+
+ <tr>
+ <td>Patient Name</td>
+ <td><input type="text" name="pname"></td>
+ </tr>
+
+<tr>
+<td>Age</td>
+<td><input type="text" name="age"></td>
+</tr>
+
+<tr>
+<td>Gender</td>
+<td><input type="radio" name="gender" value="male">Male</td>
+<td><input type="radio" name="gender" value="female">Female</td>
+</tr>
+
+<tr>
+<td>Address</td><td><input type="text" name="addr"></td>
+</tr>
+
+<tr>
+<td>Doctor Name</td>
+<td><input type="text" name="dname"></td>
+<td>Speciality</td>
+<td><select name="spl">
+<option value=""selected>
+<option>ChildrenSpecialist</option>
+<option>HeartSurgeon</option>
+<option>Gynacologist</option></select></td>
+</tr>
+
+<tr>
+<td>Date Of Appointment</td><td><input type="text" name="doa"></td>
+<td>Time</td>
+<td><input type="text" name="time"></td>
+</tr>
+
+<tr>
+<td>Complaint</td>
+<td><input type="text" name="comp"></td>
+</tr>
+
+<tr>
+<td>Illness History</td>
+<td><input type="text" name="illnesshistory"></td>
+</tr>
+</table>
+<table>
+<tr>
+<td><input type="submit" value="Insert"></td>
+<td><input type="reset" value="Reset"></td>
+</tr>
+
+</table>
+</center>
+</form>
+ </BODY>
+</HTML>

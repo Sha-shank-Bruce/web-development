@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Edit Patient Status</title>
+</head>
+<body> <h2>Edit Patient Status Details</h2>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<hr>
+<div align="right">
+<a href ="viewpatientstatus.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+ <%
+  String id=request.getParameter("id");
+ String dt=request.getParameter("dt");
+String rdoc=request.getParameter("rdoc");
+String speciality=request.getParameter("spl");
+String condofpat=request.getParameter("cond");
+String status=request.getParameter("status");
+String prescription=request.getParameter("prescription");
+int wardno=Integer.parseInt(request.getParameter("wardno"));
+%>
+ <%
+ PreparedStatement ps=con.prepareStatement("update status set ref_doc=?,speciality=?,ward=?,cond_patient=?,status=?,prescription=?,day=? where pid="+id);
+
+ ps.setString(1,rdoc);
+ ps.setString(2,speciality);
+ ps.setInt(3,wardno);
+ ps.setString(4,condofpat);
+ ps.setString(5,status);
+ ps.setString(6,prescription);
+ ps.setString(7,dt);
+ ps.executeUpdate();
+ %>
+ <center>
+ <h2>Patient Status Details Updated Sucessfully</h2>
+ </center>
+ </body>
+ </html>
+
+

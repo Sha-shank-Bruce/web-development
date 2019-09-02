@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>JSP Page</title>
+    </head>
+    <%@ page language="java"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<body>
+<div align="right"><a href ="searchstaff.jsp">
+<h6>Back</h6>
+</a></div>
+
+   <%!
+Statement st1;
+String s,name,gender,doj,designation,address,payscale,role,id,permission;
+%>
+<%
+ id =request.getParameter("id");
+%>
+<%
+st1=con.createStatement();
+s="select * from staff where id="+id;
+ResultSet rs1=st1.executeQuery(s);
+%>
+<center>
+<form action=""  name="ff2">
+<table border="4">
+<th>Id</th>
+<th>Name</th>
+<th>Gender</th>
+<th>D.O.J</th>
+<th>Designation</th>
+<th>Address</th>
+<th>Payscale</th>
+<th>Role</th>
+<th>Permission</th>
+<%
+if(rs1.next())
+{
+        id=rs1.getString(1);
+	name=rs1.getString(2);
+	gender=rs1.getString(3);
+    doj=rs1.getString(4);
+	designation=rs1.getString(5);
+	address=rs1.getString(6);
+    payscale=rs1.getString(7);
+    role=rs1.getString(8);
+	permission=rs1.getString(9);
+%>
+<tr>
+<td ><font color="purple"size="+1"><i><%=id%></font></td>
+<td ><font color="purple"size="+1"><i><%=name%></font></td>
+<td><font color="purple"size="+"><%=gender%></font></td>
+<td><font color="puple"size="+"><%=doj%></font></td>
+<td><font color="purple"size="+"><%=designation%></font></td>
+<td><font color="purple"size="=+"><%=address%></font></td>
+<td><font color="purple"size="+"><%=payscale%></font></td>
+<td><font color="purple"size="+"><%=role%></font></td>
+<td><font color="purple"size="+"><%=permission%></font></td>
+<%
+}
+%>
+</tr>
+</table>
+</form>
+</center>
+</body>
+</html>
+
+

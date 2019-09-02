@@ -1,0 +1,55 @@
+<%@ page language="java"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<HTML>
+ <HEAD>
+  <TITLE> Discharge Form </TITLE>
+ </HEAD>
+ <BODY>
+  <div align="right"><a href="login.jsp"><h3>Logout</h3></a></div>
+ <center><h1>Discharge Form<h1>
+<form name="myform" action="dischargedb.jsp">
+ <table>
+  <tr><td>PatientId</td>
+ <td><select name="id"><option value=""selected>
+<%!
+String s;
+int id;
+%>
+<%
+Statement st=con.createStatement();
+s="select * from registration";
+ResultSet rs=st.executeQuery(s);
+while(rs.next())
+{
+id=rs.getInt(1);
+%>
+<option><%=id%></option>
+<%
+}
+%>
+</select>
+</td>
+
+  <td>RoomNo</td><td><input type="text" name="roomno"></td></tr>
+ <tr><td>PatientName</td><td><input type="text" name="name"></td>
+ <td>Age</td><td><input type="text" name="age"></td></tr>
+ <tr><td>Gender</td><td><input type="radio" name="gender" value="male">Male</td><td><input type="radio" name="gender" value="female">Female</td></tr>
+ <tr><td>Consultant</td><td><input type="text" name="consult"></td></tr>
+ <tr><td>Date Of Admission</td><td><input type="text" name="doa"></td>
+ <td>Time Of Admission</td><td><input type="text" name="toa"></td></tr>
+ <tr><td>Date Of Surgery</td><td><input type="text" name="dos"></td>
+ <td>Time Of Surgery</td><td><input type="text" name="tos"></td></tr>
+ <tr><td>Date of Discharge</td><td><input type="text" name="dod"></td>
+ <td>Time Of Discharge</td><td><input type="text" name="tod"></td></tr>
+ <tr><td>History Final Diagnosis</td><td><input type="text" name="hfd"></td></tr>
+ <tr><td>Complaints</td><td><input type="text" name="comp"></td></tr>
+ <tr><td>Investigation</td><td><input type="text" name="invest"></td></tr>
+ <tr><td>Treatment Given</td><td><input type="text" name="treatment"></td></tr>
+ <tr><td>Condition At The Time Of Discharge </td><td><input type="text" name="cond"></td></tr>
+ <tr><td>Review</td><td><input type="text" name="review"></td></tr></table>
+ <table><tr><td><input type="submit" value="Insert"></td>
+ <td><input type="reset" value="Reset"></td></tr></table>
+</center> </form></BODY>
+</HTML>

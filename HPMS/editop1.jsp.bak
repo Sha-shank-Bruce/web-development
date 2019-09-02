@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Edit Staff</title>
+</head>
+<body> <h2>Edit OutPatient Details</h2>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<hr>
+<div align="right">
+<a href ="viewoutpatient.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+<%!
+String id,name,gender,address,dname,speciality,complaint,illnesshistory,dt,tim,doa;
+int age;
+%>
+ <%
+   id=request.getParameter("id");
+  dt=request.getParameter("dt");
+ address=request.getParameter("address");
+ age=Integer.parseInt(request.getParameter("age"));
+ dname=request.getParameter("dname");
+  speciality=request.getParameter("spl");
+ doa=request.getParameter("doa");
+ tim=request.getParameter("time");
+  complaint=request.getParameter("comp");
+  illnesshistory=request.getParameter("illnesshistory");
+ %>
+ <%
+ PreparedStatement ps=con.prepareStatement("update out_patient set age=?,address=?,doc_name=?,speciality=?,date_of_appt=?,time=?,complaint=?,illness_history=?,day=? where pid="+id);
+ ps.setInt(1,age);
+ ps.setString(2,address);
+ ps.setString(3,dname);
+ ps.setString(4,speciality);
+ ps.setString(5,doa);
+ ps.setString(6,tim);
+ ps.setString(7,complaint);
+ ps.setString(8,illnesshistory);
+ ps.setString(9,dt);
+ ps.executeUpdate();
+ %>
+ <center>
+ <h2>OutPatient Details Updated Sucessfully</h2>
+ </center>
+ </body>
+ </html>

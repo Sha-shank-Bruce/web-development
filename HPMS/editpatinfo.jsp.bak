@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>JSP Page</title>
+</head>
+<body>
+<h2 align="center">Edit InPatient Details</h2>
+
+<%@ page language="java"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+
+<form name="myform" action="./editpatinfo1.jsp" >
+<div align="right">
+<a href ="viewinpatient.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+<%!
+Statement st2;
+String id,name,gender,diagnosis,operationtitle,s,r3,r4;
+int age,registration;
+%>
+
+<center>
+<%
+id =request.getParameter("id");
+%>
+<%
+st2=con.createStatement();
+s="select * from pat_info where id='"+id+"'";
+ResultSet rs2=st2.executeQuery(s);
+
+if(rs2.next())
+{
+	name=rs2.getString(1);
+gender=rs2.getString(2);
+age=rs2.getInt(6);
+registration=rs2.getInt(3);
+diagnosis=rs2.getString(4);
+operationtitle=rs2.getString(5);
+id=rs2.getString(7);
+}
+
+ if(gender.equals("male"))
+ {
+	 r3="checked";
+	 r4="";
+ }
+ else
+ {
+	 r4="checked";
+	 r3="";
+ }
+ %>
+<table>
+<tr align="left">
+<td>Id</td><td><input type="text" name="id" value="<%=id%>" disabled>
+<input type="hidden" name="id" value="<%=id%>"></td>
+ </tr>
+
+<tr>
+<td> Name</td><td><input type="text" name="name" value="<%=name%>" size="20" disabled></td>
+</tr>
+<tr><td>Gender</td>
+<td><input type="radio" name="gender" value="male" <%=r3%> disabled>Male</td>
+<td><input type="radio" name="gender" value="female" <%=r4%> disabled>Female</td></tr>
+<tr>
+<tr>
+<td>Age</td><td><input type="text" name="age" value="<%=age%>"></td>
+</tr>
+<tr>
+<td>Registration</td><td><input type="text" name="registration" value="<%=registration%>"></td>
+</tr>
+<tr>
+<td>Diagnosis</td><td><input type="text" name="diagnosis" value="<%=diagnosis%>"></td>
+</tr>
+<tr>
+<td>Operation Title</td><td><input type="text" name="operationtitle" value="<%=operationtitle%>"></td>
+</tr>
+</table>
+
+<p align="center">
+ <input type= "submit" value= "Update">
+ <input type= "reset" value= "Reset"></p>
+</form>
+</body>
+</html>

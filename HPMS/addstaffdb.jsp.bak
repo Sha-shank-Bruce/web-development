@@ -1,0 +1,57 @@
+ <div align="right"><a href="viewstaff.jsp"><h3>Back</h3></a></div>
+ <HTML>
+ <HEAD>
+  <TITLE> Add Staff</TITLE>
+  </HEAD>
+ <BODY>
+ <%@ page import="java.sql.*"%>
+ <%@ page import="java.io.*"%>
+ <%@ page language="java"%>
+ <%@ include file="previlage.jsp"%>
+
+ <%
+ String id=request.getParameter("id");
+ String name=request.getParameter("name");
+ String gender=request.getParameter("gender");
+ String doj=request.getParameter("doj");
+ String address=request.getParameter("address");
+ String designation=request.getParameter("desgn");
+ int payscale=Integer.parseInt(request.getParameter("pay"));
+ String roles=request.getParameter("roles");
+%>
+<%
+String[] previlage=request.getParameterValues("previlage");
+String str="";
+for(int i=0;i<previlage.length;i++)
+{
+str=str+previlage[i];
+}
+%>
+<%
+PreparedStatement ps=con.prepareStatement("insert into staff values(?,?,?,?,?,?,?,?,?)");
+ps.setString(1,id);
+ps.setString(2,name);
+ps.setString(3,gender);
+ps.setString(4,doj);
+ps.setString(6,address);
+ps.setString(5,designation);
+ps.setInt(7,payscale);
+ps.setString(8,roles);
+ps.setString(9,str);
+ps.executeUpdate();
+%>
+<%
+String password=request.getParameter("pass");
+%>
+<%
+PreparedStatement ps1=con.prepareStatement("insert into login values(?,?,?,?)");
+ps1.setString(1,id);
+ps1.setString(2,password);
+ps1.setString(3,roles);
+ps1.setString(4,str);
+ps1.executeUpdate();
+%>
+<h1>Insert Successfully</h1>
+<a href="addstaff.jsp">Add Staff</a>
+ </BODY>
+</HTML>

@@ -1,0 +1,52 @@
+ <div align="right"><a href="viewregistration.jsp"><h3>Back</a></div><HTML>
+ <HEAD>
+  <TITLE> Registration</TITLE>
+ </HEAD>
+ <BODY>
+ <%@ page import="java.sql.*"%>
+ <%@ include file="conn.jsp"%>
+ <%@ page import="java.io.*"%>
+ <%@ page language="java"%>
+ <%
+ int formno=Integer.parseInt(request.getParameter("form"));
+ String id=request.getParameter("id");
+ String name=request.getParameter("name");
+ String dob=request.getParameter("dob");
+ int age=Integer.parseInt(request.getParameter("age"));
+ String gender=request.getParameter("gender");
+ String occupation=request.getParameter("occupation");
+ String address=request.getParameter("addr");
+ String email=request.getParameter("email");
+ int ifinpatbedno=Integer.parseInt(request.getParameter("bedno"));
+ String refdoc=request.getParameter("rdoc"); 
+ String patienttype=request.getParameter("ptype");
+String mobileno=request.getParameter("mno");
+%>
+<%
+try
+{
+PreparedStatement ps=con.prepareStatement("insert into registration values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+ps.setString(1,id);
+ps.setString(2,name);
+ps.setInt(3,age);
+ps.setString(4,gender);
+ps.setString(5,occupation);
+ps.setString(6,address);
+ps.setString(7,email);
+ps.setString(8,mobileno);
+ps.setString(9,refdoc);
+ps.setString(10,patienttype);
+ps.setInt(11,ifinpatbedno);
+ps.setString(12,dob);
+ps.setInt(13,formno);
+ps.executeUpdate();
+}
+catch(Exception e)
+{
+	System.out.println(e);
+}
+%>
+<h1>Insert Succesfully</h1>
+<a href="registration.jsp">Register</a>
+ </BODY>
+</HTML>

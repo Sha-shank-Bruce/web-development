@@ -1,0 +1,21 @@
+  <div align="right"><a href="receptionist.jsp"><h3>Back</h3></a></div>
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> Registration </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+ <center><b><i><h1>Registration</h1>
+ <font size="4">
+ <a href="registration.jsp">Registration Form</a><br><br>
+  <a href="viewreg1.jsp">View Registration</a>
+   </b></i>
+ </font></center>
+
+  </BODY>
+  </HTML>

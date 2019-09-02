@@ -1,0 +1,44 @@
+ <div align="right"><a href="viewoutpat2.jsp"><h3>Logout</h3></a></div>
+   <HTML>
+ <HEAD>
+  <TITLE> Out Patient</TITLE>
+  </HEAD>
+ <BODY>
+ <%@ page import="java.sql.*"%>
+ <%@ include file="conn.jsp"%>
+ <%@ page import="java.io.*"%>
+ <%@ page language="java"%>
+ <%
+  int id=Integer.parseInt(request.getParameter("id"));
+ String pname=request.getParameter("pname");
+ String date=request.getParameter("date");
+ String gender=request.getParameter("gender");
+ String address=request.getParameter("addr");
+ int age=Integer.parseInt(request.getParameter("age"));
+ String dname=request.getParameter("dname");
+ String speciality=request.getParameter("spl");
+ String doa=request.getParameter("doa");
+ String time=request.getParameter("time");
+ String complaint=request.getParameter("comp");
+ String illnesshistory=request.getParameter("illnesshistory");
+ %>
+ <%
+ PreparedStatement ps=con.prepareStatement("insert into out_patient values(?,?,?,?,?,?,?,?,?,?,?,?)");
+ ps.setInt(1,id);
+ ps.setString(2,pname);
+ ps.setInt(3,age);
+ ps.setString(4,address);
+ ps.setString(5,gender); 
+ ps.setString(6,dname);
+ ps.setString(7,speciality);
+ ps.setString(12,doa);
+ ps.setString(10,time);
+ ps.setString(8,complaint);
+ ps.setString(9,illnesshistory);
+ ps.setString(11,date);
+ ps.executeUpdate();
+ %>
+ <h1>Insert Succesfully</h1>
+ <a href="outpatient.jsp">Outpatient</a>
+ </BODY>
+ </HTML>

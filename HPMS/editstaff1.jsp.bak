@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Edit Staff</title>
+</head>
+<body> <h2>Edit Staff Details</h2>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<hr>
+<div align="right">
+<a href ="viewstaff.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+<%!
+String id,name,gender,doj,designation,address,payscale,role,s="";
+%>
+<center>
+<%
+ String id=request.getParameter("id");
+ String address=request.getParameter("address");
+ String designation=request.getParameter("desgn");
+ int payscale=Integer.parseInt(request.getParameter("pay"));
+  String password=request.getParameter("pass");
+ String roles=request.getParameter("roles");
+  String[] permission=request.getParameterValues("previlage");
+  for(int i=0;i<permission.length;i++)
+  {
+	s=s+permission[i];
+  }
+%>
+<%=id%>
+<%=s%>
+<%
+PreparedStatement ps=con.prepareStatement("update staff set designation=?,address=?,payscale=?,role=?,permission=? where id="+id);
+ps.setString(2,address);
+ps.setString(1,designation);
+ps.setInt(3,payscale);
+ps.setString(4,roles);
+ps.setString(5,s);
+ps.executeUpdate();
+%>
+<%
+PreparedStatement ps1=con.prepareStatement("update login set password=?,roles=?,permission=? where userid="+id);
+ps1.setString(2,roles);
+ps1.setString(1,password);
+ps1.setString(3,s);
+ps1.executeUpdate();
+%>
+</center>
+
+<table align="center">
+<tr>
+<td>
+<br><br><br><br><br>
+<td>Staff Details Updated Sucessfully!</td></tr>
+</table>
+<%
+s="";
+%>
+</body>
+</html>

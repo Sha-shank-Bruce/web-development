@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Edit InPatient</title>
+</head>
+<body> <h2>Edit InPatient Details</h2>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<hr>
+<div align="right">
+<a href ="viewinpatient.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+<%
+String  id=request.getParameter("id");
+String raddress=request.getParameter("address");
+String relation=request.getParameter("relation");
+int age=Integer.parseInt(request.getParameter("age"));
+%>
+<%
+PreparedStatement ps2=con.prepareStatement("update rel_info set address=?,rel_with_pat=?,age=? where id="+id);
+ps2.setString(1,raddress);
+ps2.setString(2,relation);
+ps2.setInt(3,age);
+ps2.executeUpdate();
+%> 
+  <center>
+ <h2>InPatient Details Updated Sucessfully</h2>
+ </center>
+ </body>
+ </html>

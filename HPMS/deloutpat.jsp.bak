@@ -1,0 +1,20 @@
+<html>
+<head>
+<title> Delete </title>
+</head>
+<body>
+<%@ page language="java"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+ <div align="right"><a href="viewoutpatient.jsp"><h3>Back</h3></a></div>
+<%
+String id=request.getParameter("id");
+%>
+<%
+PreparedStatement ps=con.prepareStatement("delete from out_pat where pid="+id);
+ps.executeUpdate();
+%>
+<h1>Deleted Successfully</h1>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> Delete Staff </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+  <div align="right"><a href="staff.jsp"><h3>Back</h3></a><a href="login.jsp"><h3>Logout</h3></a></div>
+  <form name="myform" action="delstaff.jsp">
+  <center><h1>Delete Staff</h1>
+  <table><tr><td>ID</td>
+  <td><input type="text" name="id"></td></tr>
+  </table><br>
+  <table>
+  <tr><td><input type="submit" value="Delete"></td></tr>
+  <table></center>
+  </form>
+ </BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> Admin Page </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY> <div align="right"><a href="login.jsp"><h3>Logout</h3></a></div>
+ <center><h1>Admin Page<h1></center><br><br>
+  <center>
+ <font size="4"><b><i>
+ <a href="staff.jsp">Staff</a><br>
+ <a href="viewregistration.jsp">Registration</a><br>
+ <a href="viewoutpatient.jsp">OutPatient</a><br>
+ <a href="viewinpatient.jsp">InPatient</a><br>
+ <a href="viewdischarge.jsp">PatientDischarge</a><br>
+ <a href="viewpatientstatus.jsp">PatientHealthStatus</a><br>
+ 
+ </b></i>
+ </font></center>
+</BODY>
+</HTML>

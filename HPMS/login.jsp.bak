@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE></TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+ <form action="logindb.jsp">
+ <center> <h1> Hospital Patient Management System</h1></center><br><br>
+<center>
+<table>
+<tr>
+<td>UserID</td>
+<td><input type="text" name="userid"></td></tr>
+<tr><td>Password</td>
+<td><input type="password" name="pass"></td>
+</tr>
+
+</table>
+<center><br>
+ <a href="feedbackform.jsp">PatientFeedbackForm</a><br>
+<br><br>
+<table>
+<td><input type="submit" value="Login"></td>
+<td><input type="reset" value="Reset"></td></tr>
+</center></table>
+</form>
+ </BODY>
+</HTML>

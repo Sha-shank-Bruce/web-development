@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Edit InPatient</title>
+</head>
+<body> <h2>Edit InPatient Details</h2>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*"%>
+<%@ include file="conn.jsp"%>
+<hr>
+<div align="right">
+<a href ="viewinpatient.jsp">
+<b>
+Back
+</b>
+</a>
+</div>
+<%! String address;
+ int age;
+ %>
+ <%
+  String  id=request.getParameter("id");
+ int roomno=Integer.parseInt(request.getParameter("roomno"));
+ address=request.getParameter("address");
+ age=Integer.parseInt(request.getParameter("age"));
+ String guardian=request.getParameter("guardian");
+ String rdoc=request.getParameter("rdoc");
+ String doa=request.getParameter("doa");
+ String toa=request.getParameter("toa");
+ String dod=request.getParameter("dod");
+ String tod=request.getParameter("tod");
+ String treatingconsultant=request.getParameter("tconsult");
+ %>
+ <%
+ PreparedStatement ps=con.prepareStatement("update in_patient set room_no=?,age=?,address=?,name_of_guardian=?,ref_doc=?,treating_consultant=?,date_of_admision=?,time_of_admision=?,date_of_discharge=?,time_of_discharge=? where pid="+id);
+  ps.setInt(2,age);
+ ps.setString(3,address);
+  ps.setInt(1,roomno);
+ ps.setString(4,guardian);
+ ps.setString(7,doa);
+ ps.setString(8,toa);
+ ps.setString(10,tod);
+ ps.setString(9,dod);
+ ps.setString(6,treatingconsultant);
+ ps.setString(5,rdoc);
+ ps.executeUpdate();
+ %>
+  <center>
+ <h2>InPatient Details Updated Sucessfully</h2>
+ </center>
+ </body>
+ </html>
